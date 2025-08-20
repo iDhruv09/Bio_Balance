@@ -7,6 +7,6 @@ class HealthData(models.Model):
     heart_rate = models.IntegerField()
     stress_level = models.IntegerField()
     glucose = models.FloatField()
-
+    spo2 = models.IntegerField(default=98)  # New field, default healthy range
     def __str__(self):
         return f"{self.user} - {self.date}"

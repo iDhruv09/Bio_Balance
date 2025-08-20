@@ -24,6 +24,7 @@ def dashboard_view(request):
         "heart_rate": (60, 100),
         "stress_level": (1, 5),
         "glucose": (70, 140),
+        "spo2": (95, 100),  # ✅ Added SPO2
     }
 
     return render(request, "dashboard.html", {

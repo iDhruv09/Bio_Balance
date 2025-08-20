@@ -4,11 +4,12 @@ from .models import HealthData
 class HealthDataForm(forms.ModelForm):
     class Meta:
         model = HealthData
-        fields = ['user', 'date', 'sleep_hours', 'heart_rate', 'stress_level', 'glucose']
+        fields = ['user', 'date', 'sleep_hours', 'heart_rate', 'stress_level', 'glucose', 'spo2']
         widgets = {
             'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
             'sleep_hours': forms.NumberInput(attrs={'step': '0.1', 'class': 'form-control'}),
             'heart_rate': forms.NumberInput(attrs={'class': 'form-control'}),
             'stress_level': forms.NumberInput(attrs={'min': 1, 'max': 10, 'class': 'form-control'}),
             'glucose': forms.NumberInput(attrs={'step': '0.1', 'class': 'form-control'}),
+            'spo2': forms.NumberInput(attrs={'min': 70, 'max': 100, 'class': 'form-control'}),  # ✅ Added
         }

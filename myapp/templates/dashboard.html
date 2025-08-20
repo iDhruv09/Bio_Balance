@@ -71,25 +71,28 @@
         <div class="table-responsive">
             <table class="table table-striped table-hover align-middle">
                 <thead class="table-dark">
-                    <tr>
-                        <th>Date</th>
-                        <th>Sleep (hrs)</th>
-                        <th>Heart Rate</th>
-                        <th>Stress</th>
-                        <th>Glucose</th>
-                    </tr>
+                <tr>
+                    <th>Date</th>
+                    <th>Sleep (hrs)</th>
+                    <th>Heart Rate</th>
+                    <th>Stress</th>
+                    <th>Glucose</th>
+                    <th>SPO₂ (%)</th>
+                </tr>
                 </thead>
                 <tbody>
-                    {% for row in health_data %}
-                    <tr>
-                        <td>{{ row.date }}</td>
-                        <td>{{ row.sleep_hours }}</td>
-                        <td>{{ row.heart_rate }}</td>
-                        <td>{{ row.stress_level }}</td>
-                        <td>{{ row.glucose }}</td>
-                    </tr>
-                    {% endfor %}
+                {% for row in health_data %}
+                <tr>
+                    <td>{{ row.date }}</td>
+                    <td>{{ row.sleep_hours }}</td>
+                    <td>{{ row.heart_rate }}</td>
+                    <td>{{ row.stress_level }}</td>
+                    <td>{{ row.glucose }}</td>
+                    <td>{{ row.spo2 }}</td>
+                </tr>
+                {% endfor %}
                 </tbody>
+
             </table>
         </div>
     </div>
@@ -97,14 +100,18 @@
 
 
     <!-- AI Recommendations -->
-    <div class="card p-4">
-        <h2 class="text-success mb-3">📝 AI Recommendations</h2>
-        <ul class="recommendation-list list-unstyled">
-            {% for r in recs %}
-                <li>✅ {{ r }}</li>
-            {% endfor %}
-        </ul>
-    </div>
+    <!-- AI Recommendations -->
+        <!-- AI Recommendations -->
+                <div class="card p-4">
+                    <h2 class="text-success mb-3">📝 AI Recommendations</h2>
+                    <ul class="recommendation-list list-unstyled">
+                        {% for r in recs %}
+                            <li><strong>{{ r }}</strong></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+
     {% endif %}
 
       <!-- Chart Section -->
@@ -161,6 +168,15 @@
                 fill: true,
                 tension: 0.3
             }
+            {
+    label: 'SPO₂ (%)',
+    data: [{% for row in health_data %}{{ row.spo2 }},{% endfor %}],
+    borderColor: '#8e5ea2',
+    backgroundColor: 'rgba(142,94,162,0.2)',
+    fill: true,
+    tension: 0.3
+}
+
         ]
     };
 
