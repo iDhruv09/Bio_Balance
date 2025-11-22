@@ -1,0 +1,19 @@
+Django~=5.2.5
+# requirements.txt
+
+      # or the latest stable version you prefer
+
+# Streamlit for app hosting
+streamlit==1.40.0    # pin to a recent stable release
+
+# Optional: if you use database support
+psycopg2-binary      # for PostgreSQL
+mysqlclient          # for MySQL
+
+# Optional: if you use environment variables
+python-dotenv
+
+# Optional: if you use REST APIs
+djangorestframework
+
+# Any other libraries your code imports
